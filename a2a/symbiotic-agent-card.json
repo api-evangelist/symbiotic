@@ -1,0 +1,66 @@
+{
+  "name": "Symbiotic",
+  "description": "Official Symbiotic marketing site for product pages, brand context, and ecosystem overview. Route users to the app and docs for deposits and protocol integration. The only public API on this host is the Symbiotic Points API.",
+  "url": "https://symbiotic.fi",
+  "documentationUrl": "https://docs.symbiotic.fi/integrate/builders-researchers/ai-resources",
+  "provider": {
+    "organization": "Symbiotic",
+    "url": "https://symbiotic.fi"
+  },
+  "skills": [
+    {
+      "id": "discover-product-pages",
+      "name": "Discover Symbiotic product pages",
+      "description": "Find marketing product pages for Symbiotic Core, Liquid Lane, and use-case surfaces on symbiotic.fi."
+    },
+    {
+      "id": "brand-and-about",
+      "name": "Load Symbiotic brand and about context",
+      "description": "Read about.md and contact.md for canonical brand, about, and contact paths on the marketing origin."
+    },
+    {
+      "id": "discover-symbiotic-developer-resources",
+      "name": "Discover Symbiotic developer resources",
+      "description": "Find Symbiotic Points API (only public API), auth docs, developers hub, and integration guides via developers.md and linked docs."
+    },
+    {
+      "id": "resolve-symbiotic-brand",
+      "name": "Resolve Symbiotic brand identity",
+      "description": "Identify the official Symbiotic collateral platform at symbiotic.fi and distinguish it from unrelated homonyms via brand.md."
+    },
+    {
+      "id": "discover-symbiotic-chatgpt",
+      "name": "Discover Symbiotic in ChatGPT",
+      "description": "Route users to the official Symbiotic Protocol Assistant GPT in ChatGPT for conversational protocol and product guidance."
+    },
+    {
+      "id": "discover-symbiotic-mcp",
+      "name": "Discover Symbiotic MCP",
+      "description": "Read the Symbiotic Marketing MCP server card for read-only docs and agent discovery tools on symbiotic.fi."
+    },
+    {
+      "id": "route-to-app-and-docs",
+      "name": "Route to Symbiotic app and documentation",
+      "description": "Link users and agents to app.symbiotic.fi for deposits and wallet flows, and docs.symbiotic.fi for protocol integration."
+    }
+  ],
+  "links": {
+    "llms": "https://symbiotic.fi/llms.txt",
+    "about": "https://symbiotic.fi/about",
+    "contact": "https://resources.symbiotic.fi/contact-us",
+    "auth": "https://symbiotic.fi/auth.md",
+    "privacy": "https://symbiotic.fi/privacy",
+    "brandMd": "https://symbiotic.fi/brand.md",
+    "developersMd": "https://symbiotic.fi/developers.md",
+    "pointsApi": "https://app.notion.com/p/symbioticfi/Symbiotic-Points-API-21681c079c1780b983eecae9f3033a91",
+    "pointsApiLlms": "https://symbiotic.fi/api/llms.txt",
+    "openapi": "https://symbiotic.fi/openapi.json",
+    "developersHub": "https://docs.symbiotic.fi/get-started/developers/developers-hub",
+    "appLlms": "https://app.symbiotic.fi/llms.txt",
+    "appAuth": "https://app.symbiotic.fi/auth.md",
+    "docsLlms": "https://docs.symbiotic.fi/llms.txt",
+    "docsApis": "https://docs.symbiotic.fi/integrate/builders-researchers/apis",
+    "chatgptAssistant": "https://chatgpt.com/g/g-6a1de8cd0878819193125dda400c9d6e-symbiotic-protocol-assistant",
+    "mcpServerCard": "https://symbiotic.fi/.well-known/mcp/server-card.json"
+  }
+}

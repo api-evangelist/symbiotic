@@ -1,0 +1,40 @@
+generated: '2026-07-28'
+method: probed
+source: https://symbiotic.fi/.well-known/agent-card.json
+description: 'A2A Agent Card observed at /.well-known/agent-card.json on symbiotic.fi. Grade is measured
+  against the A2A 1.0.0 AgentCard object: ''conformant'' passes every structural check, ''near-conformant''
+  is correctly shaped but omits optional fields, ''flavored'' fails a hard check and is an agent card
+  in spirit rather than in schema. Provider-published by construction — served from the provider''s own
+  host; nothing here is derived or generated.'
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: symbiotic.fi
+conformance:
+  spec: A2A 1.0.0
+  grade: flavored
+  protocol_version: null
+  preferred_transport: null
+  deviations:
+  - capabilities-not-object
+  - no-protocolVersion
+  - no-defaultInputModes
+  - no-defaultOutputModes
+  - no-preferredTransport
+  - no-version
+card:
+  name: Symbiotic
+  description: Official Symbiotic marketing site for product pages, brand context, and ecosystem overview.
+    Route users to the app and docs for deposits and protocol integration. The only public API on this
+    host is the Symbiotic Points API.
+  url: https://symbiotic.fi
+  version: null
+  documentation_url: https://docs.symbiotic.fi/integrate/builders-researchers/ai-resources
+  skills: 7
+  file: symbiotic-agent-card.json
+x-evidence:
+  fetched: '2026-07-28'
+  url: https://symbiotic.fi/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  note: Verbatim body saved alongside this manifest. No field inferred.
