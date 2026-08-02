@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/symbioticfi
+packages:
+- language: go
+  registry: pkg.go.dev
+  name: github.com/symbioticfi/relay
+  url: https://github.com/symbioticfi/relay
+  install: go get github.com/symbioticfi/relay
+  official: true
+  kind: sdk
+  description: >-
+    Symbiotic Relay — Go implementation of the relay node plus generated Go
+    client libraries for the Relay API (github.com/symbioticfi/relay/api/client/v1,
+    gRPC + HTTP/JSON).
+- language: go
+  registry: pkg.go.dev
+  name: github.com/symbioticfi/cosmos-relay-sdk
+  url: https://github.com/symbioticfi/cosmos-relay-sdk
+  install: go get github.com/symbioticfi/cosmos-relay-sdk
+  official: true
+  kind: sdk
+  description: Cosmos SDK integration for the Symbiotic Relay.
+- language: typescript
+  registry: github
+  name: symbiotic-cli
+  url: https://github.com/symbioticfi/cli
+  install: curl -fsSL https://raw.githubusercontent.com/symbioticfi/cli/main/install.sh | bash
+  official: true
+  kind: cli
+  description: >-
+    Symbiotic CLI (symb) — fetch data and interact with Symbiotic Core smart
+    contracts. Distributed via install script (not published to npm); see cli/.
+- language: solidity
+  registry: github
+  name: symbioticfi/core
+  url: https://github.com/symbioticfi/core
+  install: forge install symbioticfi/core
+  official: true
+  kind: contracts
+  description: Symbiotic Core smart contracts (Vaults, Operators, Resolvers, Networks).
+notes: >-
+  First-party libraries are Go (relay + cosmos-relay-sdk) and Solidity (core
+  contracts); the CLI is TypeScript distributed by install script. No npm/PyPI/
+  crates.io/RubyGems/NuGet/Maven/Packagist first-party packages were found.

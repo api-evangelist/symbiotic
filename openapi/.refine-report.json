@@ -1,0 +1,14 @@
+{
+  "provider": "symbiotic",
+  "sources": [
+    "symbiotic-symbioticapiservice-api-openapi.yml"
+  ],
+  "outputs": [
+    "symbiotic-symbioticapiservice-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

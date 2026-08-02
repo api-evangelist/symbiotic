@@ -1,0 +1,58 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.symbiotic.fi/relay-sdk/node/http-api/
+api: openapi/symbiotic-relay-openapi.json
+summary: >-
+  Cross-cutting conventions for the Symbiotic Relay HTTP API, a RESTful JSON
+  interface each Relay node exposes for signature aggregation, validator-set
+  queries, and event streaming. The API server is operator self-hosted (default
+  http://localhost:8080); there is no vendor-hosted endpoint.
+authentication:
+  style: none-declared
+  notes: >-
+    The Relay HTTP API declares no securitySchemes and is intended to run on the
+    operator's trusted node/network boundary. Access control is a deployment
+    concern (bind address, reverse proxy, network policy), not an API-level
+    credential. See authentication/ — no scheme was derivable from the spec.
+content_type:
+  request: application/json
+  response: application/json
+  binary_encoding: base64
+  notes: Binary blobs (messages, signatures, proofs, keys) are base64-encoded strings in JSON.
+pagination:
+  style: epoch-scoped
+  notes: >-
+    Collection reads are scoped by epoch (e.g. /v1/signatures/epoch/{epoch},
+    /v1/signature-requests/epoch/{epoch}) or by request id, rather than
+    cursor/offset paging. The current epoch is discoverable via
+    /v1/epoch/current.
+addressing:
+  request_id: Signature/aggregation resources are keyed by requestId.
+  epoch: Validator-set and signature collections are keyed by epoch (string).
+  chain: Commit status is keyed by settlementChainId.
+streaming:
+  style: server-streaming
+  endpoints:
+  - /v1/stream/signatures
+  - /v1/stream/proofs
+  - /v1/stream/validator-set
+  notes: >-
+    Real-time updates are delivered over long-lived server-streaming responses
+    (the HTTP/JSON projection of the gRPC streaming methods), not webhooks.
+idempotency:
+  supported: false
+  notes: >-
+    No Idempotency-Key contract is documented; the single write operation
+    (POST /v1/sign) is a signing request evaluated against validator-set state.
+    No idempotency pointer is emitted.
+versioning:
+  scheme: uri-path
+  current: v1
+  cross_link: lifecycle/symbiotic-lifecycle.yml
+error_envelope:
+  format: grpc-status
+  schema: Status
+  cross_link: errors/symbiotic-problem-types.yml
+rate_limiting:
+  documented: false
+  notes: Self-hosted node API; no provider-imposed rate limit is published.

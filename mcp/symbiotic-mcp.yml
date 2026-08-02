@@ -1,0 +1,88 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/symbiotic-relay-openapi.json
+note: Candidate MCP tool list mechanically derived from the Symbiotic Relay HTTP API (grpc-gateway). No
+  official hosted MCP server was found; the Relay API is operator self-hosted (default http://localhost:8080).
+server:
+  name: symbiotic-relay
+  transport: http
+tools:
+- name: get_aggregation_proof
+  description: Get aggregation proof
+  source_operation: openapi/symbiotic-relay-openapi.json#GetAggregationProof
+- name: get_aggregation_proofs_by_epoch
+  description: Get aggregation proofs by epoch
+  source_operation: openapi/symbiotic-relay-openapi.json#GetAggregationProofsByEpoch
+- name: get_aggregation_status
+  description: Get aggregation status, can be sent only to aggregator nodes
+  source_operation: openapi/symbiotic-relay-openapi.json#GetAggregationStatus
+- name: get_last_all_committed
+  description: Get last committed epochs for all settlement chains
+  source_operation: openapi/symbiotic-relay-openapi.json#GetLastAllCommitted
+- name: get_last_committed
+  description: Get last committed epoch for a specific settlement chain
+  source_operation: openapi/symbiotic-relay-openapi.json#GetLastCommitted
+- name: get_current_epoch
+  description: Get current epoch
+  source_operation: openapi/symbiotic-relay-openapi.json#GetCurrentEpoch
+- name: sign_message
+  description: Sign a message
+  source_operation: openapi/symbiotic-relay-openapi.json#SignMessage
+- name: get_signature_request_i_ds_by_epoch
+  description: Get all signature request IDs by epoch
+  source_operation: openapi/symbiotic-relay-openapi.json#GetSignatureRequestIDsByEpoch
+- name: get_signature_request
+  description: Get signature request by request id
+  source_operation: openapi/symbiotic-relay-openapi.json#GetSignatureRequest
+- name: get_signature_requests_by_epoch
+  description: Get all signature requests by epoch
+  source_operation: openapi/symbiotic-relay-openapi.json#GetSignatureRequestsByEpoch
+- name: get_signatures_by_epoch
+  description: Get signature by epoch
+  source_operation: openapi/symbiotic-relay-openapi.json#GetSignaturesByEpoch
+- name: get_signatures
+  description: Get signature by request id
+  source_operation: openapi/symbiotic-relay-openapi.json#GetSignatures
+- name: listen_proofs
+  description: Stream aggregation proofs in real-time. If start_epoch is provided, sends historical data
+    first
+  source_operation: openapi/symbiotic-relay-openapi.json#ListenProofs
+- name: listen_signatures
+  description: Stream signatures in real-time. If start_epoch is provided, sends historical data first
+  source_operation: openapi/symbiotic-relay-openapi.json#ListenSignatures
+- name: listen_validator_set
+  description: Stream validator set changes in real-time. If start_epoch is provided, sends historical
+    data first
+  source_operation: openapi/symbiotic-relay-openapi.json#ListenValidatorSet
+- name: get_validator_set
+  description: Get current validator set
+  source_operation: openapi/symbiotic-relay-openapi.json#GetValidatorSet
+- name: get_custom_schedule_node_status
+  description: 'Checks if the current node should be active based on a custom schedule derived from the
+    validator set.
+
+    This enables external applications to use the relay''s validator set for coordinating distributed
+    tasks,
+
+    such as deciding which application instances should commit data on-chain or perform other coordinated
+    actions.
+
+    The schedule ensures deterministic but randomized selection of active nodes at any given time.'
+  source_operation: openapi/symbiotic-relay-openapi.json#GetCustomScheduleNodeStatus
+- name: get_validator_set_header
+  description: Get validator set header
+  source_operation: openapi/symbiotic-relay-openapi.json#GetValidatorSetHeader
+- name: get_validator_set_metadata
+  description: Get validator set metadata like extra data and request id to fetch aggregation and signature
+    requests
+  source_operation: openapi/symbiotic-relay-openapi.json#GetValidatorSetMetadata
+- name: get_validator_by_address
+  description: Get validator by address
+  source_operation: openapi/symbiotic-relay-openapi.json#GetValidatorByAddress
+- name: get_validator_by_key
+  description: Get validator by key
+  source_operation: openapi/symbiotic-relay-openapi.json#GetValidatorByKey
+- name: get_local_validator
+  description: Get local validator
+  source_operation: openapi/symbiotic-relay-openapi.json#GetLocalValidator

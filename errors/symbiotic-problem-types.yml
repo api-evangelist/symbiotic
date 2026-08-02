@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/symbiotic-relay-openapi.json
+format: grpc-status
+envelope:
+  schema: Status
+  fields:
+    code: integer (google.rpc.Code / int32)
+    message: string
+    details: array of google.protobuf.Any
+  media_type: application/json
+  note: Errors follow the gRPC / grpc-gateway status model (google.rpc.Status), not RFC 9457 problem+json.
+    Every operation returns a `default` response carrying this Status object on any non-2xx outcome.
+codes:
+- code: 3
+  status: INVALID_ARGUMENT
+  http: 400
+  meaning: Malformed request id, epoch, address, or key parameter.
+- code: 5
+  status: NOT_FOUND
+  http: 404
+  meaning: Requested signature request, proof, validator, or epoch does not exist.
+- code: 9
+  status: FAILED_PRECONDITION
+  http: 400
+  meaning: Validator set / epoch not yet committed or node not ready.
+- code: 13
+  status: INTERNAL
+  http: 500
+  meaning: Unexpected relay node error.
+- code: 14
+  status: UNAVAILABLE
+  http: 503
+  meaning: Relay node or downstream chain temporarily unavailable.
+applies_to:
+- openapi/symbiotic-relay-openapi.json#GetAggregationProof
+- openapi/symbiotic-relay-openapi.json#GetAggregationProofsByEpoch
+- openapi/symbiotic-relay-openapi.json#GetAggregationStatus
+- openapi/symbiotic-relay-openapi.json#GetLastAllCommitted
+- openapi/symbiotic-relay-openapi.json#GetLastCommitted
+- openapi/symbiotic-relay-openapi.json#GetCurrentEpoch
+- openapi/symbiotic-relay-openapi.json#SignMessage
+- openapi/symbiotic-relay-openapi.json#GetSignatureRequestIDsByEpoch
+- openapi/symbiotic-relay-openapi.json#GetSignatureRequest
+- openapi/symbiotic-relay-openapi.json#GetSignatureRequestsByEpoch
+- openapi/symbiotic-relay-openapi.json#GetSignaturesByEpoch
+- openapi/symbiotic-relay-openapi.json#GetSignatures
+- openapi/symbiotic-relay-openapi.json#ListenProofs
+- openapi/symbiotic-relay-openapi.json#ListenSignatures
+- openapi/symbiotic-relay-openapi.json#ListenValidatorSet
+- openapi/symbiotic-relay-openapi.json#GetValidatorSet
+- openapi/symbiotic-relay-openapi.json#GetCustomScheduleNodeStatus
+- openapi/symbiotic-relay-openapi.json#GetValidatorSetHeader
+- openapi/symbiotic-relay-openapi.json#GetValidatorSetMetadata
+- openapi/symbiotic-relay-openapi.json#GetValidatorByAddress
+- openapi/symbiotic-relay-openapi.json#GetValidatorByKey
+- openapi/symbiotic-relay-openapi.json#GetLocalValidator

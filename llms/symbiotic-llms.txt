@@ -1,0 +1,70 @@
+# Symbiotic
+
+Symbiotic is a generalized shared security system enabling decentralized networks to bootstrap powerful, fully sovereign ecosystems.
+
+- [Symbiotic](/get-started/): Get started with Symbiotic's shared security system
+- [What is Symbiotic?](/get-started/what/overview): Symbiotic is a collateral management platform that brings enforceable economic guarantees onchain through programmable collateral markets.
+- [Vaults](/get-started/what/components/vaults): A vault is the on chain container that holds collateral and connects it to networks. Each vault holds a single collateral token, keeps track of who has...
+- [Adapters](/get-started/what/components/adapters): Adapters connect Symbiotic vault capital to supported applications and external strategies while preserving consistent allocation, accounting, and security rules.
+- [Rewards](/get-started/what/components/universal-delegator): Symbiotic can be considered an exchange hub between basically 3 parties: stakers, operators, and networks.
+- [Curators](/get-started/what/participants/curators): Curators define vault strategy, configure vault parameters, and manage how capital is allocated across applications and adapters.
+- [Applications](/get-started/what/participants/applications): Networks are fundamental components of the Symbiotic protocol that consume economic security and drive the demand for staking. They represent decentralized...
+- [Allocators](/get-started/what/participants/allocators): Learn how allocators participate in Symbiotic vaults and evaluate different vault strategies.
+- [Operators](/get-started/what/participants/operators): Learn how operators participate in Symbiotic and provide services backed by vault collateral.
+- [Use Cases](/get-started/use-cases/): Explore how teams ship on top of Symbiotic's shared security and Relay attestations.
+- [Credit & Guarantees](/get-started/use-cases/credit-and-guarantees): Credit applications can use Symbiotic vault collateral to back borrower obligations, transfer default risk, and create programmable guarantees.
+- [Insurance and Underwriting](/get-started/use-cases/insurance-and-underwriting): Collateralized underwriting applications can use Symbiotic vault capital to back coverage, isolate risk, and settle valid claims through slashing.
+- [Liquidity](/get-started/use-cases/liquidity): Symbiotic vault capital can provide on-demand liquidity through adapters while remaining part of a unified collateral and accounting framework.
+- [Addresses](/get-started/resources/addresses): A comprehensive list of Symbiotic official smart contract deployments.
+- [Bug Bounty](/get-started/resources/audits): Bug bounty program: Cantina - $500,000 (Core & Rewards)
+- [Risks](/get-started/resources/risks): General security recommendations for participants interacting with Symbiotic Core V2.
+- [Points Program](/get-started/resources/points-program): Symbiotic Points reward participants that provide useful economic security through the protocol. They are earned by depositing collateral into vaults and, in...
+- [Analytics](/get-started/resources/analytics-and-apis): Live dashboards for monitoring Symbiotic vaults, rewards, and users.
+- [Universal Staking](/learn/): Universal Staking is more than just restaking. Instead of merely reusing staked assets to secure multiple networks, it introduces a flexible coordination layer...
+- [Network](/learn/core-concepts/network): In Symbiotic, a Network is any protocol that requires a decentralized infrastructure network to deliver a service in the crypto economy, such as enabling...
+- [Operator](/learn/core-concepts/operator): Operators run the software that keeps decentralized networks alive. They include node operators or validators that run consensus and network-specific binaries,...
+- [Vault](/learn/core-concepts/vault): A vault is the on-chain container that holds collateral and connects it to networks. Each vault holds a single collateral token, tracks deposits and...
+- [Curator](/learn/core-concepts/curator): Curators set and maintain a vault's policy. They decide how stake is spread across networks and operators, what kind of slashing flow applies, and who can...
+- [Rewards](/learn/core-concepts/rewards): Rewards are payments that Networks make to vault participants in exchange for security and work. Rewards are distributed using historical snapshots of vault...
+- [Slashing](/learn/core-concepts/slashing): Slashing is how a Network penalizes operators for provable misbehavior. A Network's middleware sends a slashing request to the vault; the vault's Slasher...
+- [Registries and Opt-ins](/learn/mechanics/registries-and-opt-ins): Registries give Networks and Operators a canonical on-chain identity that the rest of Symbiotic can reference.
+- [Epochs and Delays](/learn/mechanics/epochs-and-delays): Epochs are the time rules of Symbiotic. They tell you when validator sets update, when withdrawal requests can be claimed, and how long captured guarantees...
+- [Voting Power](/learn/relay/voting-power): The VotingPowerProvider is the Relay contract that turns delegated Symbiotic stake into operator voting power inside a validator set. It sits between Symbiotic...
+- [Valset (Validator Set)](/learn/relay/valset): The validator set is the current list of operators and their weights that a network uses for signing and verification during a given epoch. In Relay, this is...
+- [Secure Attestations](/learn/relay/secure-attestations): Secure attestations are stake-backed signatures over a message hash that contracts can verify against the active validator set header.
+- [Settlement](/learn/relay/settlement): Settlement is the on-chain endpoint for Relay. It stores validator set headers (operators, keys, weights, thresholds) per network / subnetwork / epoch and...
+- [Instant Liquidity](/liquid-lane/): Symbiotic Instant Liquidity enables redemptions for illiquid or time-locked assets through curator-managed vault liquidity and onchain RFQ flows.
+- [Instant Liquidity](/liquid-lane/how-it-works): Symbiotic Instant Liquidity enables redemptions for illiquid or time-locked assets through curator-managed vault liquidity and onchain RFQ flows.
+- [Curators](/liquid-lane/participants/curators): Curators service Instant Liquidity on Liquid Lane — deploying and managing Symbiotic vaults, configuring redemption assets and pricing, and fulfilling instant redemption requests.
+- [Asset Issuers](/liquid-lane/participants/asset-issuers): Asset issuers integrate Instant Liquidity to provide immediate redemptions for their tokenized assets without maintaining idle liquidity.
+- [Introduction](/integrate/): Symbiotic is a shared security protocol that enables networks to access economic security from stakers. The protocol supports multiple participant roles, each...
+- [Get Started](/integrate/curators/): This guide walks you through the curator lifecycle in Symbiotic. You'll deploy a vault, manage allocations, and earn fees from managing depositors' funds.
+- [Deploy Vault V2](/integrate/curators/deploy-vault): This guide explains how to deploy a Symbiotic V2 vault using the DeployVaultV2 script.
+- [Submit Metadata](/integrate/curators/submit-metadata): The Symbiotic UI displays TVL, allocations, and relationships between curators, vaults, operators, and networks. To make your entity visible on the UI, submit...
+- [Adapter Management](/integrate/curators/manage-adapters): Learn how to add adapters to a Vault V2 Universal Delegator.
+- [Manage Allocations](/integrate/curators/manage-allocations): Learn how curators allocate Vault V2 assets across adapters through the Universal Delegator.
+- [Manage Fees](/integrate/curators/registry-and-fees): Vault V2 supports management and performance fees configured directly on the vault. Fees accrue automatically as newly minted vault shares to the configured fee receivers.
+- [Build an Application](/integrate/applications/deploy-an-application): Learn how to integrate an application with Symbiotic Core V2 by deploying a middleware, registering your application, and connecting AppAdapters to vaults.
+- [Get Started](/integrate/builders-researchers/): Build applications on top of Symbiotic and access protocol data. Use these resources to integrate Symbiotic into your project.
+- [Relay](/learn/relay/): Learn how Symbiotic Relay provides stake-backed attestations, validator sets, voting power, and settlement.
+- [Developers Hub](/get-started/developers/developers-hub): Find role-specific integration paths, tools, APIs, ABIs, events, hints, and AI resources for building with Symbiotic.
+- [Relay Quickstart](/get-started/developers/relay-quickstart): Symbiotic Super Sum spins up a relay network that runs simple sum computations. Schedule a job on any supported chain and the result is posted to every...
+- [Ecosystem](/get-started/resources/ecosystem): Explore Symbiotic ecosystem participants, including networks, curators, and operators using shared security.
+- [Bridges and Cross-chain Messaging](/get-started/use-cases/bridges-cross-chain-messaging): Stake-backed validator attestations for bridge state, DVNs, and cross-domain proofs.
+- [Chain Agnostic Applications](/get-started/use-cases/chain-agnostic-applications): Appchains often spin up bespoke validator sets, multisigs or custom messaging paths per use case (governance messages, bridges, feeds). Each new route brings...
+- [Decentralized Compute and AI Verification](/get-started/use-cases/decentralized-compute-ai-verification): "Decentralized Docker" or AI inference jobs producing proofs and Relay attestations.
+- [General Attestation Layers](/get-started/use-cases/general-attestation-layers): Stake-secured attestations for arbitrary computations and events that trigger on-chain actions.
+- [Insurance and Guarantees](/get-started/use-cases/insurance-and-guarantees): insurance, guarantees, and onchain risk transfer secured by slashable capital
+- [Liquidity Management](/get-started/use-cases/liquidity-management): Use Symbiotic Relay attestations for liquidity management, rebalancing, and cross-chain treasury workflows.
+- [Oracle Networks and Data Feeds](/get-started/use-cases/oracle-networks-data-feeds): Price, rate, and event oracles with custom resolvers and slashing rules.
+- [Relay SDK](/get-started/what/relay): The Symbiotic Relay SDK is the trust layer for data and computation.
+- [ABIs And Bindings](/integrate/builders-researchers/abis-and-bindings): Find generated ABIs and TypeScript bindings for integrating with Symbiotic smart contracts and protocol tooling.
+- [AI Resources](/integrate/builders-researchers/ai-resources)
+- [APIs](/integrate/builders-researchers/apis): Use Symbiotic API endpoints to fetch protocol data, build dashboards, and improve integrations.
+- [CLI](/integrate/builders-researchers/cli): Symbiotic CLI (symb) is a command-line tool for reading on-chain data and interacting with Symbiotic Core smart contracts.
+- [Events](/integrate/builders-researchers/events): This page provides a complete overview of event handling and math across the Symbiotic system.
+- [Hints](/integrate/builders-researchers/hints): Symbiotic core contracts simplify integration for networks and products with different stake utilization goals. One key simplification is flexibility to...
+- [Helpful Core Contracts' Endpoints](/integrate/curators/helpful-core-contracts-endpoints): This page lists useful functions for curators across Symbiotic Core contracts.
+- [Vault Wrapping](/integrate/curators/vault-wrapping): Sometimes, due to design choices for security guarantees or interaction flow optimization, you can't implement your ideas in a standard way. In these cases,...
+- [Relay Quickstart](/learn/relay/dev-workflow): This quickstart walks through the developer workflow that the repo enables: spinning up Symbiotic Core locally, preparing vaults and operators, wiring...
+- [Capital Efficiency Analysis](/liquid-lane/research/capital-efficiency-analysis): Compare liquidity buffers, DEX pools, and Symbiotic instant liquidity vaults for tokenized RWA redemptions and capital-efficient yield generation.

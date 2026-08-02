@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/symbioticfi/relay/releases
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://docs.symbiotic.fi/relay-sdk/node/http-api/
+  notes: >-
+    The Relay HTTP/gRPC API is versioned in the URI path (/v1/...). Node software
+    itself follows semantic-versioned GitHub releases (relay v1.1.1) plus nightly
+    builds; the Core smart contracts version independently (core v2.0.0).
+releases:
+  relay: {latest: v1.1.1, date: '2026-06-01', url: https://github.com/symbioticfi/relay/releases}
+  core: {latest: v2.0.0, date: '2026-07-06', url: https://github.com/symbioticfi/core/releases}
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation policy or RFC 8594 Sunset/Deprecation header support was found. No Deprecation pointer emitted.
+sla:
+  url: null
+  notes: Decentralized protocol / self-hosted node software; no uptime SLA published.
+status_page:
+  url: null
+  notes: >-
+    No official status page found. symbiotic.statuspage.io is an unclaimed
+    subdomain that redirects to statuspage.io marketing; not wired. No StatusPage
+    pointer emitted.
+deprecated_operations: []

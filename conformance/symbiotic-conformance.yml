@@ -1,0 +1,32 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/symbiotic-relay-openapi.json
+standards:
+- id: openapi-2.0
+  conforms: true
+  evidence: Relay API published as an OpenAPI/Swagger 2.0 document (docs/api/v1/api.swagger.json).
+- id: grpc
+  conforms: true
+  evidence: Native gRPC service SymbioticAPIService (api/proto/v1/api.proto); HTTP/JSON is the grpc-gateway projection.
+- id: protobuf
+  conforms: true
+  evidence: proto3 message/service definitions published (grpc/symbiotic-relay.proto).
+- id: grpc-status-errors
+  conforms: true
+  evidence: Errors use the google.rpc.Status envelope (code/message/details) on the default response.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Uses gRPC Status, not application/problem+json.
+- id: oauth2
+  conforms: false
+  evidence: No securitySchemes declared; API is operator self-hosted.
+- id: json-api
+  conforms: false
+- id: fhir-r4
+  conforms: false
+notes: >-
+  Symbiotic is an onchain shared-security / restaking protocol; its trust surface
+  is smart-contract audits (Bailsec, Statemind, Cyfrin, OpenZeppelin, ChainSecurity,
+  Certora, Zellic, Sigma Prime, Ackee, OtterSec) plus a Cantina bug-bounty, not an
+  enterprise compliance program (no SOC 2 / ISO 27001 published). No Compliance
+  pointer is emitted.

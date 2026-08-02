@@ -1,0 +1,19 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Symbiotic Relay API
+  version: 1.0.0
+extends: openapi/symbiotic-relay-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: symbiotic
+    x-apievangelist-product: Symbiotic Relay
+    x-api-title: Symbiotic Relay HTTP API
+    description: 'Relay HTTP API: a RESTful JSON interface exposed by each Symbiotic Relay node for signature
+      aggregation, validator-set queries, epoch/commit status, and event streaming. Self-hosted by operators
+      (default http://localhost:8080).'
+    x-docs: https://docs.symbiotic.fi/relay-sdk/node/http-api/
+- target: $.tags[?(@.name=='SymbioticAPIService')]
+  update:
+    description: 'Symbiotic Relay node API: validator set, signing, aggregation proofs, commit status,
+      and streaming.'

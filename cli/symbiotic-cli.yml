@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/symbioticfi/cli
+name: Symbiotic CLI
+binary: symb
+description: >-
+  Command-line tool for fetching data from and interacting with the Symbiotic
+  Core smart contracts (networks, operators, vaults, stakers, rewards).
+language: typescript
+repo: https://github.com/symbioticfi/cli
+requirements:
+- Node.js >= 20
+- pnpm (auto-enabled via corepack)
+install:
+- method: script
+  command: curl -fsSL https://raw.githubusercontent.com/symbioticfi/cli/main/install.sh | bash
+  notes: Installs to ~/.symb/cli and updates shell PATH.
+- method: source
+  command: pnpm install
+  notes: Local development install.
+command_groups:
+- group: net
+  purpose: Network registration, configuration, and querying.
+- group: op
+  purpose: Operator registration and opt-in / opt-out management.
+  examples: ['symb op list']
+- group: vault
+  purpose: Vault listing and limit / share configuration.
+  examples: ['symb vault list']
+- group: staker
+  purpose: Staker balance queries and withdrawal claims.
+  examples: ['symb staker withdraw']
+- group: rewards
+  purpose: Fee management and reward claiming.

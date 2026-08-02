@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: https://github.com/symbioticfi/relay/releases
+scheme: semver + dated GitHub releases (per repo)
+note: >-
+  Symbiotic ships as multiple versioned repos rather than one changelog feed.
+  Recent tagged releases are captured below (recent window only). Nightly builds
+  (nightly-YYYYMMDD) are omitted.
+streams:
+- repo: relay
+  url: https://github.com/symbioticfi/relay/releases
+  current: v1.1.1
+  entries:
+  - {version: v1.1.1, date: '2026-06-01'}
+  - {version: v1.1.0, date: '2026-05-15'}
+- repo: core
+  url: https://github.com/symbioticfi/core/releases
+  current: v2.0.0
+  entries:
+  - {version: v2.0.0, date: '2026-07-06', highlights: Symbiotic Core V2}
+  - {version: v1.0.3, date: '2025-10-31'}
+  - {version: v1.0.2, date: '2025-08-08'}

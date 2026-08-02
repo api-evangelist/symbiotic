@@ -1,0 +1,12 @@
+generated: '2026-07-21'
+method: generated
+source: openapi/symbiotic-relay-openapi.json
+skills:
+- file: symbiotic-query-validator-set.md
+  name: Query the Symbiotic Relay validator set
+  api: openapi/symbiotic-relay-openapi.json
+  operations: [GetCurrentEpoch, GetValidatorSet, GetValidatorSetHeader, GetValidatorByAddress, GetLocalValidator]
+- file: symbiotic-sign-and-aggregate.md
+  name: Sign a message and collect its aggregation proof
+  api: openapi/symbiotic-relay-openapi.json
+  operations: [SignMessage, GetSignatureRequest, GetAggregationStatus, GetSignatures, GetAggregationProof]

@@ -16,7 +16,15 @@ modified: '2026-07-17'
 tags:
 - Company
 - Crypto Defi
-apis: []
+apis:
+- aid: symbiotic:symbiotic-symbioticapiservice-api
+  name: Symbiotic SymbioticAPIService API
+  description: The SymbioticAPIService API from Symbiotic — 22 operation(s) for symbioticapiservice.
+  tags:
+  - SymbioticAPIService
+  properties:
+  - type: OpenAPI
+    url: openapi/symbiotic-symbioticapiservice-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

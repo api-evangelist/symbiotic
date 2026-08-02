@@ -1,0 +1,56 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/symbiotic-relay-openapi.json
+entities:
+- name: ValidatorSet
+  id: epoch
+  description: Snapshot of the active validator set for an epoch.
+- name: Validator
+  id: operator
+  description: A single operator in the validator set, with voting power, keys, and vaults.
+- name: ValidatorVault
+  description: A vault backing a validator on a specific chain.
+- name: Key
+  description: A validator signing key (tag + payload).
+- name: SignatureRequest
+  id: requestId
+  description: A request to sign a message, scoped to an epoch.
+- name: Signature
+  description: An individual operator signature for a request.
+- name: AggregationProof
+  description: Aggregated signature proof for a request.
+- name: ChainEpochInfo
+  description: Last committed epoch per settlement chain.
+relationships:
+- from: ValidatorSet
+  to: Validator
+  type: has_many
+  via: validators
+- from: ValidatorSet
+  to: ValidatorSetStatus
+  type: has_one
+  via: status
+- from: Validator
+  to: Key
+  type: has_many
+  via: keys
+- from: Validator
+  to: ValidatorVault
+  type: has_many
+  via: vaults
+- from: Validator
+  to: ValidatorSet
+  type: belongs_to
+  via: epoch
+- from: Signature
+  to: SignatureRequest
+  type: belongs_to
+  via: requestId
+- from: AggregationProof
+  to: SignatureRequest
+  type: belongs_to
+  via: requestId
+- from: SignatureRequest
+  to: ValidatorSet
+  type: belongs_to
+  via: requiredEpoch
