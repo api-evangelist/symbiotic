@@ -31,6 +31,12 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgentSkill
+  url: skills/symbiotic-query-validator-set.md
+- type: MCPServer
+  url: mcp/symbiotic-mcp.yml
+- type: Overlay
+  url: overlays/symbiotic-relay-overlay.yaml
 - type: AgentCard
   url: a2a/symbiotic-a2a.yml
   name: A2A Agent Card
