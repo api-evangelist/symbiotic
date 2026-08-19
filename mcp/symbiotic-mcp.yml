@@ -86,3 +86,9 @@ tools:
 - name: get_local_validator
   description: Get local validator
   source_operation: openapi/symbiotic-relay-openapi.json#GetLocalValidator
+deployment:
+  mode: none
+  verified: derived
+  tools: 22
+  checked: '2026-08-12'
+  source: catalog MCP census

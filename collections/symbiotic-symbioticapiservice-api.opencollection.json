@@ -1,0 +1,498 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "v1/api.proto SymbioticAPIService API",
+    "version": "version not set"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SymbioticAPIService",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get aggregation proof",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/aggregation/proof/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get aggregation proof"
+        },
+        {
+          "info": {
+            "name": "Get aggregation proofs by epoch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/aggregation/proofs/epoch/:epoch",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "path",
+                "description": "Epoch number"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return. 0 = server default (100). Server clamps to max (1000)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Opaque pagination cursor from a previous response's `next_from`. Empty string starts from the beginning."
+              }
+            ]
+          },
+          "docs": "Get aggregation proofs by epoch"
+        },
+        {
+          "info": {
+            "name": "Get aggregation status, can be sent only to aggregator nodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/aggregation/status/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get aggregation status, can be sent only to aggregator nodes"
+        },
+        {
+          "info": {
+            "name": "Get last committed epochs for all settlement chains",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/committed/all"
+          },
+          "docs": "Get last committed epochs for all settlement chains"
+        },
+        {
+          "info": {
+            "name": "Get last committed epoch for a specific settlement chain",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/committed/chain/:settlementChainId",
+            "params": [
+              {
+                "name": "settlementChainId",
+                "value": "",
+                "type": "path",
+                "description": "Settlement chain ID"
+              }
+            ]
+          },
+          "docs": "Get last committed epoch for a specific settlement chain"
+        },
+        {
+          "info": {
+            "name": "Get current epoch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/epoch/current"
+          },
+          "docs": "Get current epoch"
+        },
+        {
+          "info": {
+            "name": "Sign a message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/sign"
+          },
+          "docs": "Sign a message"
+        },
+        {
+          "info": {
+            "name": "Get all signature request IDs by epoch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/signature-request-ids/epoch/:epoch",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "path",
+                "description": "Epoch number"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return. 0 = server default (1000). Server clamps to max (10000)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Opaque pagination cursor from a previous response's `next_from`. Empty string starts from the beginning."
+              }
+            ]
+          },
+          "docs": "Get all signature request IDs by epoch"
+        },
+        {
+          "info": {
+            "name": "Get signature request by request id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/signature-request/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get signature request by request id"
+        },
+        {
+          "info": {
+            "name": "Get all signature requests by epoch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/signature-requests/epoch/:epoch",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "path",
+                "description": "Epoch number"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return. 0 = server default (100). Server clamps to max (1000)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Opaque pagination cursor from a previous response's `next_from`. Empty string starts from the beginning."
+              }
+            ]
+          },
+          "docs": "Get all signature requests by epoch"
+        },
+        {
+          "info": {
+            "name": "Get signature by epoch",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/signatures/epoch/:epoch",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "path",
+                "description": "Epoch number"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of items to return. 0 = server default (100). Server clamps to max (1000)."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Opaque pagination cursor from a previous response's `next_from`. Empty string starts from the beginning."
+              }
+            ]
+          },
+          "docs": "Get signature by epoch"
+        },
+        {
+          "info": {
+            "name": "Get signature by request id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/signatures/:requestId",
+            "params": [
+              {
+                "name": "requestId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get signature by request id"
+        },
+        {
+          "info": {
+            "name": "Stream aggregation proofs in real-time. If start_epoch is provided, sends historical data first",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/stream/proofs",
+            "params": [
+              {
+                "name": "startEpoch",
+                "value": "",
+                "type": "query",
+                "description": "Optional: start epoch. If provided, stream will first send all historical proofs starting from this epoch, then continue with real-time updates\nIf not provided, only proofs generated after stream creation will be sent"
+              }
+            ]
+          },
+          "docs": "Stream aggregation proofs in real-time. If start_epoch is provided, sends historical data first"
+        },
+        {
+          "info": {
+            "name": "Stream signatures in real-time. If start_epoch is provided, sends historical data first",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/stream/signatures",
+            "params": [
+              {
+                "name": "startEpoch",
+                "value": "",
+                "type": "query",
+                "description": "Optional: start epoch. If provided, stream will first send all historical signatures starting from this epoch, then continue with real-time updates\nIf not provided, only signatures generated after stream creation will be sent"
+              }
+            ]
+          },
+          "docs": "Stream signatures in real-time. If start_epoch is provided, sends historical data first"
+        },
+        {
+          "info": {
+            "name": "Stream validator set changes in real-time. If start_epoch is provided, sends historical data first",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/stream/validator-set",
+            "params": [
+              {
+                "name": "startEpoch",
+                "value": "",
+                "type": "query",
+                "description": "Optional: start epoch. If provided, stream will first send all historical validator sets starting from this epoch, then continue with real-time updates\nIf not provided, only validator sets generated after stream creation will be sent"
+              }
+            ]
+          },
+          "docs": "Stream validator set changes in real-time. If start_epoch is provided, sends historical data first"
+        },
+        {
+          "info": {
+            "name": "Get current validator set",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/validator-set",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number (optional, if not provided current epoch will be used)"
+              }
+            ]
+          },
+          "docs": "Get current validator set"
+        },
+        {
+          "info": {
+            "name": "Checks if the current node should be active based on a custom schedule derived from the validator set.\nThis enables external applications to use the relay's validator set for coordinating distributed tasks,\nsuch as deciding which application instances should commit data on-chain or perform other coordinated actions.\nThe schedule ensures deterministic but randomized selection of active nodes at any given time.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/validator-set/custom-schedule/node-status",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number to use for the validator set (optional, defaults to current epoch)"
+              },
+              {
+                "name": "seed",
+                "value": "",
+                "type": "query",
+                "description": "Custom seed for randomizing the schedule (optional). Different seeds produce different schedules\nfor the same epoch, allowing multiple independent scheduling schemes. If not provided, the schedule\nis deterministic based on epoch alone."
+              },
+              {
+                "name": "slotDurationSeconds",
+                "value": "",
+                "type": "query",
+                "description": "Duration of each time slot in seconds. Determines how frequently active groups rotate.\nExample: 60 seconds means a new group becomes active every minute."
+              },
+              {
+                "name": "maxParticipantsPerSlot",
+                "value": "",
+                "type": "query",
+                "description": "Maximum validators per group. Controls redundancy: 1 for single-instance actions (less redundancy),\n2+ for multi-instance actions (more reliability). All validators in a group are active simultaneously."
+              },
+              {
+                "name": "minParticipantsPerSlot",
+                "value": "",
+                "type": "query",
+                "description": "Minimum validators required to form a remainder group. When dividing validators into groups,\nany remainder smaller than this is not scheduled. Set equal to max for strict group sizes."
+              }
+            ]
+          },
+          "docs": "Checks if the current node should be active based on a custom schedule derived from the validator set.\nThis enables external applications to use the relay's validator set for coordinating distributed tasks,\nsuch as deciding which application instances should commit data on-chain or perform other coordinated actions.\nThe schedule ensures deterministic but randomized selection of active nodes at any given time."
+        },
+        {
+          "info": {
+            "name": "Get validator set header",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/validator-set/header",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number (optional, if not provided current epoch will be used)"
+              }
+            ]
+          },
+          "docs": "Get validator set header"
+        },
+        {
+          "info": {
+            "name": "Get validator set metadata like extra data and request id to fetch aggregation and signature requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/validator-set/metadata",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number (optional, if not provided current epoch will be used)"
+              }
+            ]
+          },
+          "docs": "Get validator set metadata like extra data and request id to fetch aggregation and signature requests"
+        },
+        {
+          "info": {
+            "name": "Get validator by address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/validator/address/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path",
+                "description": "Validator address (required)"
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number (optional, if not provided current epoch will be used)"
+              }
+            ]
+          },
+          "docs": "Get validator by address"
+        },
+        {
+          "info": {
+            "name": "Get validator by key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/validator/key/:keyTag/:onChainKey",
+            "params": [
+              {
+                "name": "keyTag",
+                "value": "",
+                "type": "path",
+                "description": "Validator key tag (required)"
+              },
+              {
+                "name": "onChainKey",
+                "value": "",
+                "type": "path",
+                "description": "Validator on chain (public) key (required)"
+              },
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number (optional, if not provided current epoch will be used)"
+              }
+            ]
+          },
+          "docs": "Get validator by key"
+        },
+        {
+          "info": {
+            "name": "Get local validator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/validator/local",
+            "params": [
+              {
+                "name": "epoch",
+                "value": "",
+                "type": "query",
+                "description": "Epoch number (optional, if not provided current epoch will be used)"
+              }
+            ]
+          },
+          "docs": "Get local validator"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
