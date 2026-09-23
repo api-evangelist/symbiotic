@@ -1,11 +1,7 @@
-swagger: '2.0'
+openapi: 3.2.0
 info:
-  title: v1/api.proto SymbioticAPIService API
+  title: v1/api.proto Symbiotic API Service API
   version: version not set
-consumes:
-- application/json
-produces:
-- application/json
 tags:
 - name: SymbioticAPIService
 paths:
@@ -16,17 +12,22 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetAggregationProofResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAggregationProofResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: requestId
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       tags:
       - SymbioticAPIService
   /v1/aggregation/proofs/epoch/{epoch}:
@@ -36,30 +37,37 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetAggregationProofsByEpochResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAggregationProofsByEpochResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: pageSize
         description: Maximum number of items to return. 0 = server default (100). Server clamps to max (1000).
         in: query
         required: false
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       - name: from
         description: Opaque pagination cursor from a previous response's `next_from`. Empty string starts from the beginning.
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - SymbioticAPIService
   /v1/aggregation/status/{requestId}:
@@ -69,17 +77,22 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetAggregationStatusResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetAggregationStatusResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: requestId
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       tags:
       - SymbioticAPIService
   /v1/committed/all:
@@ -89,12 +102,16 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetLastAllCommittedResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLastAllCommittedResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       tags:
       - SymbioticAPIService
   /v1/committed/chain/{settlementChainId}:
@@ -104,19 +121,24 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetLastCommittedResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLastCommittedResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: settlementChainId
         description: Settlement chain ID
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/epoch/current:
@@ -126,12 +148,16 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetCurrentEpochResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCurrentEpochResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       tags:
       - SymbioticAPIService
   /v1/sign:
@@ -141,20 +167,24 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/SignMessageResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignMessageResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
-      parameters:
-      - name: body
-        in: body
-        required: true
-        schema:
-          $ref: '#/definitions/SignMessageRequest'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       tags:
       - SymbioticAPIService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignMessageRequest'
+        required: true
   /v1/signature-request-ids/epoch/{epoch}:
     get:
       summary: Get all signature request IDs by epoch
@@ -162,30 +192,37 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetSignatureRequestIDsByEpochResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSignatureRequestIDsByEpochResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: pageSize
         description: Maximum number of items to return. 0 = server default (1000). Server clamps to max (10000).
         in: query
         required: false
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       - name: from
         description: Opaque pagination cursor from a previous response's `next_from`. Empty string starts from the beginning.
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - SymbioticAPIService
   /v1/signature-request/{requestId}:
@@ -195,17 +232,22 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetSignatureRequestResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSignatureRequestResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: requestId
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       tags:
       - SymbioticAPIService
   /v1/signature-requests/epoch/{epoch}:
@@ -215,30 +257,37 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetSignatureRequestsByEpochResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSignatureRequestsByEpochResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: pageSize
         description: Maximum number of items to return. 0 = server default (100). Server clamps to max (1000).
         in: query
         required: false
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       - name: from
         description: Opaque pagination cursor from a previous response's `next_from`. Empty string starts from the beginning.
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - SymbioticAPIService
   /v1/signatures/epoch/{epoch}:
@@ -248,30 +297,37 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetSignaturesByEpochResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSignaturesByEpochResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number
         in: path
         required: true
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: pageSize
         description: Maximum number of items to return. 0 = server default (100). Server clamps to max (1000).
         in: query
         required: false
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       - name: from
         description: Opaque pagination cursor from a previous response's `next_from`. Empty string starts from the beginning.
         in: query
         required: false
-        type: string
+        schema:
+          type: string
       tags:
       - SymbioticAPIService
   /v1/signatures/{requestId}:
@@ -281,38 +337,47 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetSignaturesResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSignaturesResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: requestId
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       tags:
       - SymbioticAPIService
   /v1/stream/proofs:
     get:
-      summary: Stream aggregation proofs in real-time. If start_epoch is provided, sends historical data first
+      summary: Stream aggregation proofs in real-time.
       operationId: SymbioticAPIService_ListenProofs
       responses:
         '200':
           description: A successful response.(streaming responses)
-          schema:
-            type: object
-            properties:
-              result:
-                $ref: '#/definitions/ListenProofsResponse'
-              error:
-                $ref: '#/definitions/Status'
-            title: Stream result of ListenProofsResponse
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: '#/components/schemas/ListenProofsResponse'
+                  error:
+                    $ref: '#/components/schemas/Status'
+                title: Stream result of ListenProofsResponse
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: startEpoch
         description: 'Optional: start epoch. If provided, stream will first send all historical proofs starting from this epoch, then continue with real-time updates
@@ -320,29 +385,34 @@ paths:
           If not provided, only proofs generated after stream creation will be sent'
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/stream/signatures:
     get:
-      summary: Stream signatures in real-time. If start_epoch is provided, sends historical data first
+      summary: Stream signatures in real-time.
       operationId: SymbioticAPIService_ListenSignatures
       responses:
         '200':
           description: A successful response.(streaming responses)
-          schema:
-            type: object
-            properties:
-              result:
-                $ref: '#/definitions/ListenSignaturesResponse'
-              error:
-                $ref: '#/definitions/Status'
-            title: Stream result of ListenSignaturesResponse
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: '#/components/schemas/ListenSignaturesResponse'
+                  error:
+                    $ref: '#/components/schemas/Status'
+                title: Stream result of ListenSignaturesResponse
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: startEpoch
         description: 'Optional: start epoch. If provided, stream will first send all historical signatures starting from this epoch, then continue with real-time updates
@@ -350,29 +420,34 @@ paths:
           If not provided, only signatures generated after stream creation will be sent'
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/stream/validator-set:
     get:
-      summary: Stream validator set changes in real-time. If start_epoch is provided, sends historical data first
+      summary: Stream validator set changes in real-time.
       operationId: SymbioticAPIService_ListenValidatorSet
       responses:
         '200':
           description: A successful response.(streaming responses)
-          schema:
-            type: object
-            properties:
-              result:
-                $ref: '#/definitions/ListenValidatorSetResponse'
-              error:
-                $ref: '#/definitions/Status'
-            title: Stream result of ListenValidatorSetResponse
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    $ref: '#/components/schemas/ListenValidatorSetResponse'
+                  error:
+                    $ref: '#/components/schemas/Status'
+                title: Stream result of ListenValidatorSetResponse
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: startEpoch
         description: 'Optional: start epoch. If provided, stream will first send all historical validator sets starting from this epoch, then continue with real-time updates
@@ -380,8 +455,9 @@ paths:
           If not provided, only validator sets generated after stream creation will be sent'
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/validator-set:
@@ -391,47 +467,51 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetValidatorSetResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetValidatorSetResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number (optional, if not provided current epoch will be used)
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/validator-set/custom-schedule/node-status:
     get:
-      summary: 'Checks if the current node should be active based on a custom schedule derived from the validator set.
-
-        This enables external applications to use the relay''s validator set for coordinating distributed tasks,
-
-        such as deciding which application instances should commit data on-chain or perform other coordinated actions.
-
-        The schedule ensures deterministic but randomized selection of active nodes at any given time.'
+      summary: Checks if the current node should be active based on a custom schedule derived…
       operationId: SymbioticAPIService_GetCustomScheduleNodeStatus
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetCustomScheduleNodeStatusResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCustomScheduleNodeStatusResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number to use for the validator set (optional, defaults to current epoch)
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: seed
         description: 'Custom seed for randomizing the schedule (optional). Different seeds produce different schedules
 
@@ -440,32 +520,36 @@ paths:
           is deterministic based on epoch alone.'
         in: query
         required: false
-        type: string
-        format: byte
+        schema:
+          type: string
+          format: byte
       - name: slotDurationSeconds
         description: 'Duration of each time slot in seconds. Determines how frequently active groups rotate.
 
           Example: 60 seconds means a new group becomes active every minute.'
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       - name: maxParticipantsPerSlot
         description: 'Maximum validators per group. Controls redundancy: 1 for single-instance actions (less redundancy),
 
           2+ for multi-instance actions (more reliability). All validators in a group are active simultaneously.'
         in: query
         required: false
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       - name: minParticipantsPerSlot
         description: 'Minimum validators required to form a remainder group. When dividing validators into groups,
 
           any remainder smaller than this is not scheduled. Set equal to max for strict group sizes.'
         in: query
         required: false
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       tags:
       - SymbioticAPIService
   /v1/validator-set/header:
@@ -475,41 +559,51 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetValidatorSetHeaderResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetValidatorSetHeaderResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number (optional, if not provided current epoch will be used)
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/validator-set/metadata:
     get:
-      summary: Get validator set metadata like extra data and request id to fetch aggregation and signature requests
+      summary: Get validator set metadata like extra data and request id to fetch aggregation…
       operationId: SymbioticAPIService_GetValidatorSetMetadata
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetValidatorSetMetadataResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetValidatorSetMetadataResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number (optional, if not provided current epoch will be used)
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/validator/address/{address}:
@@ -519,24 +613,30 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetValidatorByAddressResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetValidatorByAddressResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: address
         description: Validator address (required)
         in: path
         required: true
-        type: string
+        schema:
+          type: string
       - name: epoch
         description: Epoch number (optional, if not provided current epoch will be used)
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/validator/key/{keyTag}/{onChainKey}:
@@ -546,31 +646,38 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetValidatorByKeyResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetValidatorByKeyResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: keyTag
         description: Validator key tag (required)
         in: path
         required: true
-        type: integer
-        format: int64
+        schema:
+          type: integer
+          format: int64
       - name: onChainKey
         description: Validator on chain (public) key (required)
         in: path
         required: true
-        type: string
-        format: byte
+        schema:
+          type: string
+          format: byte
       - name: epoch
         description: Epoch number (optional, if not provided current epoch will be used)
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
   /v1/validator/local:
@@ -580,478 +687,484 @@ paths:
       responses:
         '200':
           description: A successful response.
-          schema:
-            $ref: '#/definitions/GetLocalValidatorResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetLocalValidatorResponse'
         default:
           description: An unexpected error response.
-          schema:
-            $ref: '#/definitions/Status'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
       parameters:
       - name: epoch
         description: Epoch number (optional, if not provided current epoch will be used)
         in: query
         required: false
-        type: string
-        format: uint64
+        schema:
+          type: string
+          format: uint64
       tags:
       - SymbioticAPIService
-definitions:
-  ListenValidatorSetResponse:
-    type: object
-    properties:
-      validatorSet:
-        $ref: '#/definitions/ValidatorSet'
-        title: The validator set
-    title: Response message for validator set changes stream
-  GetSignaturesResponse:
-    type: object
-    properties:
-      signatures:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/Signature'
-        title: List of signatures
-    title: Response message for getting signatures
-  GetSignatureRequestIDsByEpochResponse:
-    type: object
-    properties:
-      requestIds:
-        type: array
-        items:
+components:
+  schemas:
+    Status:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
           type: string
-        title: List of all signature request IDs for the epoch
-      nextFrom:
-        type: string
-        description: Cursor to retrieve the next page. Empty when this is the last page.
-    title: Response message for getting all signature request IDs by epoch
-  GetValidatorSetMetadataResponse:
-    type: object
-    properties:
-      extraData:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/ExtraData'
-      commitmentData:
-        type: string
-        format: byte
-      requestId:
-        type: string
-    title: Response message for getting validator set header
-  GetLastCommittedResponse:
-    type: object
-    properties:
-      settlementChainId:
-        type: string
-        format: uint64
-        title: Settlement chain ID
-      epochInfo:
-        $ref: '#/definitions/ChainEpochInfo'
-    title: Response message for getting last committed epoch
-  Signature:
-    type: object
-    properties:
-      signature:
-        type: string
-        format: byte
-        title: Signature data
-      messageHash:
-        type: string
-        format: byte
-        title: Message hash
-      publicKey:
-        type: string
-        format: byte
-        title: Public key
-      requestId:
-        type: string
-        title: Request ID
-    title: Digital signature
-  GetSignatureRequestResponse:
-    type: object
-    properties:
-      signatureRequest:
-        $ref: '#/definitions/SignatureRequest'
-    title: Response message for getting signature request
-  GetValidatorSetResponse:
-    type: object
-    properties:
-      validatorSet:
-        $ref: '#/definitions/ValidatorSet'
-        title: The validator set
-    title: Response message for getting validator set
-  ChainEpochInfo:
-    type: object
-    properties:
-      lastCommittedEpoch:
-        type: string
-        format: uint64
-        title: Last committed epoch for this chain
-      startTime:
-        type: string
-        format: date-time
-        title: Epoch start time
-    title: Settlement chain with its last committed epoch
-  SignMessageRequest:
-    type: object
-    properties:
-      keyTag:
-        type: integer
-        format: int64
-        title: Key tag identifier (0-127)
-      message:
-        type: string
-        format: byte
-        title: Message to be signed
-      requiredEpoch:
-        type: string
-        format: uint64
-        title: Required epoch (optional, if not provided latest committed epoch will be used)
-    title: Request message for signing a message
-  GetLastAllCommittedResponse:
-    type: object
-    properties:
-      epochInfos:
-        type: object
-        additionalProperties:
-          $ref: '#/definitions/ChainEpochInfo'
-        title: List of settlement chains with their last committed epochs
-      suggestedEpochInfo:
-        $ref: '#/definitions/ChainEpochInfo'
-        title: Suggested epoch info for signatures, it is the minimum commited epoch among all chains
-    title: Response message for getting all last committed epochs
-  GetLocalValidatorResponse:
-    type: object
-    properties:
-      validator:
-        $ref: '#/definitions/Validator'
-        title: The validator
-    title: Response message for getting local validator
-  GetAggregationProofsByEpochResponse:
-    type: object
-    properties:
-      aggregationProofs:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/AggregationProof'
-      nextFrom:
-        type: string
-        description: Cursor to retrieve the next page. Empty when this is the last page.
-    title: Response message for getting aggregation proof
-  GetAggregationStatusResponse:
-    type: object
-    properties:
-      currentVotingPower:
-        type: string
-        title: Current voting power of the aggregator (big integer as string)
-      signerOperators:
-        type: array
-        items:
+        details:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Any'
+    GetLocalValidatorResponse:
+      type: object
+      properties:
+        validator:
+          $ref: '#/components/schemas/Validator'
+          title: The validator
+      title: Response message for getting local validator
+    ListenSignaturesResponse:
+      type: object
+      properties:
+        requestId:
           type: string
-        title: List of operator addresses that signed the request
-    title: Response message for getting aggregation status
-  ValidatorSetStatus:
-    type: string
-    enum:
-    - VALIDATOR_SET_STATUS_UNSPECIFIED
-    - VALIDATOR_SET_STATUS_DERIVED
-    - VALIDATOR_SET_STATUS_AGGREGATED
-    - VALIDATOR_SET_STATUS_COMMITTED
-    default: VALIDATOR_SET_STATUS_UNSPECIFIED
-    description: "- VALIDATOR_SET_STATUS_UNSPECIFIED: Default/unknown status\n - VALIDATOR_SET_STATUS_DERIVED: Derived status\n - VALIDATOR_SET_STATUS_AGGREGATED: Aggregated status\n - VALIDATOR_SET_STATUS_COMMITTED: Committed status"
-    title: Validator set status enumeration
-  Any:
-    type: object
-    properties:
-      '@type':
-        type: string
-    additionalProperties: {}
-  SignMessageResponse:
-    type: object
-    properties:
-      requestId:
-        type: string
-        title: Hash of the signature request
-      epoch:
-        type: string
-        format: uint64
-        title: Epoch number
-    title: Response message for sign message request
-  ListenProofsResponse:
-    type: object
-    properties:
-      requestId:
-        type: string
-        title: Id of the request
-      epoch:
-        type: string
-        format: uint64
-        title: Epoch number
-      aggregationProof:
-        $ref: '#/definitions/AggregationProof'
-        title: Final aggregation proof
-    title: Response message for aggregation proofs stream
-  Status:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      message:
-        type: string
-      details:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/Any'
-  ListenSignaturesResponse:
-    type: object
-    properties:
-      requestId:
-        type: string
-        title: Id of the signature request
-      epoch:
-        type: string
-        format: uint64
-        title: Epoch number
-      signature:
-        $ref: '#/definitions/Signature'
-        title: Signature data
-    title: Response message for signatures stream
-  GetValidatorByAddressResponse:
-    type: object
-    properties:
-      validator:
-        $ref: '#/definitions/Validator'
-        title: The validator
-    title: Response message for getting validator by address
-  SignatureRequest:
-    type: object
-    properties:
-      requestId:
-        type: string
-        title: Request ID
-      keyTag:
-        type: integer
-        format: int64
-        title: Key tag identifier (0-127)
-      message:
-        type: string
-        format: byte
-        title: Message to be signed
-      requiredEpoch:
-        type: string
-        format: uint64
-        title: Required epoch
-    title: SignatureRequest represents a signature request
-  Validator:
-    type: object
-    properties:
-      operator:
-        type: string
-        title: Operator address (hex string)
-      votingPower:
-        type: string
-        title: Voting power of the validator (big integer as string)
-      isActive:
-        type: boolean
-        title: Indicates if the validator is active
-      keys:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/Key'
-        title: List of cryptographic keys
-      vaults:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/ValidatorVault'
-        title: List of validator vaults
-    title: Validator information
-  ExtraData:
-    type: object
-    properties:
-      key:
-        type: string
-        format: byte
-      value:
-        type: string
-        format: byte
-  AggregationProof:
-    type: object
-    properties:
-      messageHash:
-        type: string
-        format: byte
-        title: Message hash
-      proof:
-        type: string
-        format: byte
-        title: Proof data
-      requestId:
-        type: string
-        title: Request ID
-    title: Response message for getting aggregation proof
-  ValidatorSet:
-    type: object
-    properties:
-      version:
-        type: integer
-        format: int64
-        title: Version of the validator set
-      requiredKeyTag:
-        type: integer
-        format: int64
-        title: Key tag required to commit next validator set
-      epoch:
-        type: string
-        format: uint64
-        title: Validator set epoch
-      captureTimestamp:
-        type: string
-        format: date-time
-        title: Epoch capture timestamp
-      quorumThreshold:
-        type: string
-        title: Quorum threshold (big integer as string)
-      status:
-        $ref: '#/definitions/ValidatorSetStatus'
-        title: Status of validator set header
-      validators:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/Validator'
-        title: List of validators
-  Key:
-    type: object
-    properties:
-      tag:
-        type: integer
-        format: int64
-        title: Key tag identifier (0-127)
-      payload:
-        type: string
-        format: byte
-        title: Key payload
-    title: Cryptographic key
-  GetCurrentEpochResponse:
-    type: object
-    properties:
-      epoch:
-        type: string
-        format: uint64
-        title: Epoch number
-      startTime:
-        type: string
-        format: date-time
-        title: Epoch start time
-    title: Response message for getting current epoch
-  GetCustomScheduleNodeStatusResponse:
-    type: object
-    properties:
-      isActive:
-        type: boolean
-        description: 'True if this node is active in the current time slot and should perform the scheduled action.
+          title: Id of the signature request
+        epoch:
+          type: string
+          format: uint64
+          title: Epoch number
+        signature:
+          $ref: '#/components/schemas/Signature'
+          title: Signature data
+      title: Response message for signatures stream
+    GetValidatorByKeyResponse:
+      type: object
+      properties:
+        validator:
+          $ref: '#/components/schemas/Validator'
+          title: The validator
+      title: Response message for getting validator by key
+    GetSignatureRequestResponse:
+      type: object
+      properties:
+        signatureRequest:
+          $ref: '#/components/schemas/SignatureRequest'
+      title: Response message for getting signature request
+    GetSignatureRequestIDsByEpochResponse:
+      type: object
+      properties:
+        requestIds:
+          type: array
+          items:
+            type: string
+          title: List of all signature request IDs for the epoch
+        nextFrom:
+          type: string
+          description: Cursor to retrieve the next page. Empty when this is the last page.
+      title: Response message for getting all signature request IDs by epoch
+    Key:
+      type: object
+      properties:
+        tag:
+          type: integer
+          format: int64
+          title: Key tag identifier (0-127)
+        payload:
+          type: string
+          format: byte
+          title: Key payload
+      title: Cryptographic key
+    Signature:
+      type: object
+      properties:
+        signature:
+          type: string
+          format: byte
+          title: Signature data
+        messageHash:
+          type: string
+          format: byte
+          title: Message hash
+        publicKey:
+          type: string
+          format: byte
+          title: Public key
+        requestId:
+          type: string
+          title: Request ID
+      title: Digital signature
+    ChainEpochInfo:
+      type: object
+      properties:
+        lastCommittedEpoch:
+          type: string
+          format: uint64
+          title: Last committed epoch for this chain
+        startTime:
+          type: string
+          format: date-time
+          title: Epoch start time
+      title: Settlement chain with its last committed epoch
+    Any:
+      type: object
+      properties:
+        '@type':
+          type: string
+      additionalProperties: {}
+    GetCurrentEpochResponse:
+      type: object
+      properties:
+        epoch:
+          type: string
+          format: uint64
+          title: Epoch number
+        startTime:
+          type: string
+          format: date-time
+          title: Epoch start time
+      title: Response message for getting current epoch
+    GetValidatorByAddressResponse:
+      type: object
+      properties:
+        validator:
+          $ref: '#/components/schemas/Validator'
+          title: The validator
+      title: Response message for getting validator by address
+    ListenProofsResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          title: Id of the request
+        epoch:
+          type: string
+          format: uint64
+          title: Epoch number
+        aggregationProof:
+          $ref: '#/components/schemas/AggregationProof'
+          title: Final aggregation proof
+      title: Response message for aggregation proofs stream
+    GetAggregationProofsByEpochResponse:
+      type: object
+      properties:
+        aggregationProofs:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/AggregationProof'
+        nextFrom:
+          type: string
+          description: Cursor to retrieve the next page. Empty when this is the last page.
+      title: Response message for getting aggregation proof
+    GetCustomScheduleNodeStatusResponse:
+      type: object
+      properties:
+        isActive:
+          type: boolean
+          description: 'True if this node is active in the current time slot and should perform the scheduled action.
 
-          False if this node should wait (another group is active). When multiple validators share a slot,
+            False if this node should wait (another group is active). When multiple validators share a slot,
 
-          all return true simultaneously, enabling coordinated redundancy.'
-      currentSlotStartTime:
-        type: string
-        format: date-time
-        description: 'Start time of the current active slot. This marks the beginning of the current slot time window.
+            all return true simultaneously, enabling coordinated redundancy.'
+        currentSlotStartTime:
+          type: string
+          format: date-time
+          description: 'Start time of the current active slot. This marks the beginning of the current slot time window.
 
-          Can be used to determine how much time is left in the slot.'
-      currentSlotEndTime:
-        type: string
-        format: date-time
-        description: 'End time of the current active slot. This marks the end of the current slot time window.
+            Can be used to determine how much time is left in the slot.'
+        currentSlotEndTime:
+          type: string
+          format: date-time
+          description: 'End time of the current active slot. This marks the end of the current slot time window.
 
-          Can be used to determine how much time is left in the slot.'
-    description: Response indicating whether the current node should be active now.
-  GetSignaturesByEpochResponse:
-    type: object
-    properties:
-      signatures:
-        type: array
-        items:
+            Can be used to determine how much time is left in the slot.'
+      description: Response indicating whether the current node should be active now.
+    AggregationProof:
+      type: object
+      properties:
+        messageHash:
+          type: string
+          format: byte
+          title: Message hash
+        proof:
+          type: string
+          format: byte
+          title: Proof data
+        requestId:
+          type: string
+          title: Request ID
+      title: Response message for getting aggregation proof
+    GetSignaturesResponse:
+      type: object
+      properties:
+        signatures:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Signature'
+          title: List of signatures
+      title: Response message for getting signatures
+    SignatureRequest:
+      type: object
+      properties:
+        requestId:
+          type: string
+          title: Request ID
+        keyTag:
+          type: integer
+          format: int64
+          title: Key tag identifier (0-127)
+        message:
+          type: string
+          format: byte
+          title: Message to be signed
+        requiredEpoch:
+          type: string
+          format: uint64
+          title: Required epoch
+      title: SignatureRequest represents a signature request
+    ValidatorSet:
+      type: object
+      properties:
+        version:
+          type: integer
+          format: int64
+          title: Version of the validator set
+        requiredKeyTag:
+          type: integer
+          format: int64
+          title: Key tag required to commit next validator set
+        epoch:
+          type: string
+          format: uint64
+          title: Validator set epoch
+        captureTimestamp:
+          type: string
+          format: date-time
+          title: Epoch capture timestamp
+        quorumThreshold:
+          type: string
+          title: Quorum threshold (big integer as string)
+        status:
+          $ref: '#/components/schemas/ValidatorSetStatus'
+          title: Status of validator set header
+        validators:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Validator'
+          title: List of validators
+    GetValidatorSetHeaderResponse:
+      type: object
+      properties:
+        version:
+          type: integer
+          format: int64
+          title: Version of the validator set
+        requiredKeyTag:
+          type: integer
+          format: int64
+          title: Key tag required to commit next validator set
+        epoch:
+          type: string
+          format: uint64
+          title: Validator set epoch
+        captureTimestamp:
+          type: string
+          format: date-time
+          title: Epoch capture timestamp
+        quorumThreshold:
+          type: string
+          title: Quorum threshold (big integer as string)
+        totalVotingPower:
+          type: string
+          title: Total voting power (big integer as string)
+        validatorsSszMroot:
+          type: string
+          title: Validators SSZ Merkle root (hex string)
+      title: Response message for getting validator set header
+    SignMessageResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          title: Hash of the signature request
+        epoch:
+          type: string
+          format: uint64
+          title: Epoch number
+      title: Response message for sign message request
+    GetAggregationProofResponse:
+      type: object
+      properties:
+        aggregationProof:
+          $ref: '#/components/schemas/AggregationProof'
+      title: Response message for getting aggregation proof
+    GetValidatorSetMetadataResponse:
+      type: object
+      properties:
+        extraData:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/ExtraData'
+        commitmentData:
+          type: string
+          format: byte
+        requestId:
+          type: string
+      title: Response message for getting validator set header
+    GetSignaturesByEpochResponse:
+      type: object
+      properties:
+        signatures:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Signature'
+          title: List of signatures
+        nextFrom:
+          type: string
+          description: Cursor to retrieve the next page. Empty when this is the last page.
+      title: Response message for getting signatures by epoch
+    SignMessageRequest:
+      type: object
+      properties:
+        keyTag:
+          type: integer
+          format: int64
+          title: Key tag identifier (0-127)
+        message:
+          type: string
+          format: byte
+          title: Message to be signed
+        requiredEpoch:
+          type: string
+          format: uint64
+          title: Required epoch (optional, if not provided latest committed epoch will be used)
+      title: Request message for signing a message
+    GetValidatorSetResponse:
+      type: object
+      properties:
+        validatorSet:
+          $ref: '#/components/schemas/ValidatorSet'
+          title: The validator set
+      title: Response message for getting validator set
+    GetSignatureRequestsByEpochResponse:
+      type: object
+      properties:
+        signatureRequests:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/SignatureRequest'
+          title: List of all signature requests for the epoch
+        nextFrom:
+          type: string
+          description: Cursor to retrieve the next page. Empty when this is the last page.
+      title: Response message for getting all signature requests by epoch
+    GetLastCommittedResponse:
+      type: object
+      properties:
+        settlementChainId:
+          type: string
+          format: uint64
+          title: Settlement chain ID
+        epochInfo:
+          $ref: '#/components/schemas/ChainEpochInfo'
+      title: Response message for getting last committed epoch
+    GetAggregationStatusResponse:
+      type: object
+      properties:
+        currentVotingPower:
+          type: string
+          title: Current voting power of the aggregator (big integer as string)
+        signerOperators:
+          type: array
+          items:
+            type: string
+          title: List of operator addresses that signed the request
+      title: Response message for getting aggregation status
+    Validator:
+      type: object
+      properties:
+        operator:
+          type: string
+          title: Operator address (hex string)
+        votingPower:
+          type: string
+          title: Voting power of the validator (big integer as string)
+        isActive:
+          type: boolean
+          title: Indicates if the validator is active
+        keys:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Key'
+          title: List of cryptographic keys
+        vaults:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/ValidatorVault'
+          title: List of validator vaults
+      title: Validator information
+    ListenValidatorSetResponse:
+      type: object
+      properties:
+        validatorSet:
+          $ref: '#/components/schemas/ValidatorSet'
+          title: The validator set
+      title: Response message for validator set changes stream
+    ValidatorSetStatus:
+      type: string
+      enum:
+      - VALIDATOR_SET_STATUS_UNSPECIFIED
+      - VALIDATOR_SET_STATUS_DERIVED
+      - VALIDATOR_SET_STATUS_AGGREGATED
+      - VALIDATOR_SET_STATUS_COMMITTED
+      default: VALIDATOR_SET_STATUS_UNSPECIFIED
+      description: "- VALIDATOR_SET_STATUS_UNSPECIFIED: Default/unknown status\n - VALIDATOR_SET_STATUS_DERIVED: Derived status\n - VALIDATOR_SET_STATUS_AGGREGATED: Aggregated status\n - VALIDATOR_SET_STATUS_COMMITTED: Committed status"
+      title: Validator set status enumeration
+    ValidatorVault:
+      type: object
+      properties:
+        chainId:
+          type: string
+          format: uint64
+          title: Chain identifier
+        vault:
+          type: string
+          title: Vault address
+        votingPower:
+          type: string
+          title: Voting power for this vault (big integer as string)
+      title: Validator vault information
+    GetLastAllCommittedResponse:
+      type: object
+      properties:
+        epochInfos:
           type: object
-          $ref: '#/definitions/Signature'
-        title: List of signatures
-      nextFrom:
-        type: string
-        description: Cursor to retrieve the next page. Empty when this is the last page.
-    title: Response message for getting signatures by epoch
-  GetValidatorSetHeaderResponse:
-    type: object
-    properties:
-      version:
-        type: integer
-        format: int64
-        title: Version of the validator set
-      requiredKeyTag:
-        type: integer
-        format: int64
-        title: Key tag required to commit next validator set
-      epoch:
-        type: string
-        format: uint64
-        title: Validator set epoch
-      captureTimestamp:
-        type: string
-        format: date-time
-        title: Epoch capture timestamp
-      quorumThreshold:
-        type: string
-        title: Quorum threshold (big integer as string)
-      totalVotingPower:
-        type: string
-        title: Total voting power (big integer as string)
-      validatorsSszMroot:
-        type: string
-        title: Validators SSZ Merkle root (hex string)
-    title: Response message for getting validator set header
-  GetValidatorByKeyResponse:
-    type: object
-    properties:
-      validator:
-        $ref: '#/definitions/Validator'
-        title: The validator
-    title: Response message for getting validator by key
-  GetAggregationProofResponse:
-    type: object
-    properties:
-      aggregationProof:
-        $ref: '#/definitions/AggregationProof'
-    title: Response message for getting aggregation proof
-  ValidatorVault:
-    type: object
-    properties:
-      chainId:
-        type: string
-        format: uint64
-        title: Chain identifier
-      vault:
-        type: string
-        title: Vault address
-      votingPower:
-        type: string
-        title: Voting power for this vault (big integer as string)
-    title: Validator vault information
-  GetSignatureRequestsByEpochResponse:
-    type: object
-    properties:
-      signatureRequests:
-        type: array
-        items:
-          type: object
-          $ref: '#/definitions/SignatureRequest'
-        title: List of all signature requests for the epoch
-      nextFrom:
-        type: string
-        description: Cursor to retrieve the next page. Empty when this is the last page.
-    title: Response message for getting all signature requests by epoch
+          additionalProperties:
+            $ref: '#/components/schemas/ChainEpochInfo'
+          title: List of settlement chains with their last committed epochs
+        suggestedEpochInfo:
+          $ref: '#/components/schemas/ChainEpochInfo'
+          title: Suggested epoch info for signatures, it is the minimum commited epoch among all chains
+      title: Response message for getting all last committed epochs
+    ExtraData:
+      type: object
+      properties:
+        key:
+          type: string
+          format: byte
+        value:
+          type: string
+          format: byte

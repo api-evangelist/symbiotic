@@ -1,7 +1,8 @@
 {
   "provider": "symbiotic",
   "sources": [
-    "symbiotic-symbioticapiservice-api-openapi.yml"
+    "_original/symbiotic-relay-openapi.json",
+    "_original/symbiotic-relay-votingpower-openapi.json"
   ],
   "outputs": [
     "symbiotic-symbioticapiservice-api-openapi.yml"
@@ -9,6 +10,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "symbiotic-relay-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "symbiotic-relay-votingpower-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "symbiotic-symbioticapiservice-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
