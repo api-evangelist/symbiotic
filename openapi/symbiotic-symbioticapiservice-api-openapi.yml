@@ -709,207 +709,6 @@ paths:
       - SymbioticAPIService
 components:
   schemas:
-    Status:
-      type: object
-      properties:
-        code:
-          type: integer
-          format: int32
-        message:
-          type: string
-        details:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Any'
-    GetLocalValidatorResponse:
-      type: object
-      properties:
-        validator:
-          $ref: '#/components/schemas/Validator'
-          title: The validator
-      title: Response message for getting local validator
-    ListenSignaturesResponse:
-      type: object
-      properties:
-        requestId:
-          type: string
-          title: Id of the signature request
-        epoch:
-          type: string
-          format: uint64
-          title: Epoch number
-        signature:
-          $ref: '#/components/schemas/Signature'
-          title: Signature data
-      title: Response message for signatures stream
-    GetValidatorByKeyResponse:
-      type: object
-      properties:
-        validator:
-          $ref: '#/components/schemas/Validator'
-          title: The validator
-      title: Response message for getting validator by key
-    GetSignatureRequestResponse:
-      type: object
-      properties:
-        signatureRequest:
-          $ref: '#/components/schemas/SignatureRequest'
-      title: Response message for getting signature request
-    GetSignatureRequestIDsByEpochResponse:
-      type: object
-      properties:
-        requestIds:
-          type: array
-          items:
-            type: string
-          title: List of all signature request IDs for the epoch
-        nextFrom:
-          type: string
-          description: Cursor to retrieve the next page. Empty when this is the last page.
-      title: Response message for getting all signature request IDs by epoch
-    Key:
-      type: object
-      properties:
-        tag:
-          type: integer
-          format: int64
-          title: Key tag identifier (0-127)
-        payload:
-          type: string
-          format: byte
-          title: Key payload
-      title: Cryptographic key
-    Signature:
-      type: object
-      properties:
-        signature:
-          type: string
-          format: byte
-          title: Signature data
-        messageHash:
-          type: string
-          format: byte
-          title: Message hash
-        publicKey:
-          type: string
-          format: byte
-          title: Public key
-        requestId:
-          type: string
-          title: Request ID
-      title: Digital signature
-    ChainEpochInfo:
-      type: object
-      properties:
-        lastCommittedEpoch:
-          type: string
-          format: uint64
-          title: Last committed epoch for this chain
-        startTime:
-          type: string
-          format: date-time
-          title: Epoch start time
-      title: Settlement chain with its last committed epoch
-    Any:
-      type: object
-      properties:
-        '@type':
-          type: string
-      additionalProperties: {}
-    GetCurrentEpochResponse:
-      type: object
-      properties:
-        epoch:
-          type: string
-          format: uint64
-          title: Epoch number
-        startTime:
-          type: string
-          format: date-time
-          title: Epoch start time
-      title: Response message for getting current epoch
-    GetValidatorByAddressResponse:
-      type: object
-      properties:
-        validator:
-          $ref: '#/components/schemas/Validator'
-          title: The validator
-      title: Response message for getting validator by address
-    ListenProofsResponse:
-      type: object
-      properties:
-        requestId:
-          type: string
-          title: Id of the request
-        epoch:
-          type: string
-          format: uint64
-          title: Epoch number
-        aggregationProof:
-          $ref: '#/components/schemas/AggregationProof'
-          title: Final aggregation proof
-      title: Response message for aggregation proofs stream
-    GetAggregationProofsByEpochResponse:
-      type: object
-      properties:
-        aggregationProofs:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/AggregationProof'
-        nextFrom:
-          type: string
-          description: Cursor to retrieve the next page. Empty when this is the last page.
-      title: Response message for getting aggregation proof
-    GetCustomScheduleNodeStatusResponse:
-      type: object
-      properties:
-        isActive:
-          type: boolean
-          description: 'True if this node is active in the current time slot and should perform the scheduled action.
-
-            False if this node should wait (another group is active). When multiple validators share a slot,
-
-            all return true simultaneously, enabling coordinated redundancy.'
-        currentSlotStartTime:
-          type: string
-          format: date-time
-          description: 'Start time of the current active slot. This marks the beginning of the current slot time window.
-
-            Can be used to determine how much time is left in the slot.'
-        currentSlotEndTime:
-          type: string
-          format: date-time
-          description: 'End time of the current active slot. This marks the end of the current slot time window.
-
-            Can be used to determine how much time is left in the slot.'
-      description: Response indicating whether the current node should be active now.
-    AggregationProof:
-      type: object
-      properties:
-        messageHash:
-          type: string
-          format: byte
-          title: Message hash
-        proof:
-          type: string
-          format: byte
-          title: Proof data
-        requestId:
-          type: string
-          title: Request ID
-      title: Response message for getting aggregation proof
-    GetSignaturesResponse:
-      type: object
-      properties:
-        signatures:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Signature'
-          title: List of signatures
-      title: Response message for getting signatures
     SignatureRequest:
       type: object
       properties:
@@ -929,110 +728,6 @@ components:
           format: uint64
           title: Required epoch
       title: SignatureRequest represents a signature request
-    ValidatorSet:
-      type: object
-      properties:
-        version:
-          type: integer
-          format: int64
-          title: Version of the validator set
-        requiredKeyTag:
-          type: integer
-          format: int64
-          title: Key tag required to commit next validator set
-        epoch:
-          type: string
-          format: uint64
-          title: Validator set epoch
-        captureTimestamp:
-          type: string
-          format: date-time
-          title: Epoch capture timestamp
-        quorumThreshold:
-          type: string
-          title: Quorum threshold (big integer as string)
-        status:
-          $ref: '#/components/schemas/ValidatorSetStatus'
-          title: Status of validator set header
-        validators:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Validator'
-          title: List of validators
-    GetValidatorSetHeaderResponse:
-      type: object
-      properties:
-        version:
-          type: integer
-          format: int64
-          title: Version of the validator set
-        requiredKeyTag:
-          type: integer
-          format: int64
-          title: Key tag required to commit next validator set
-        epoch:
-          type: string
-          format: uint64
-          title: Validator set epoch
-        captureTimestamp:
-          type: string
-          format: date-time
-          title: Epoch capture timestamp
-        quorumThreshold:
-          type: string
-          title: Quorum threshold (big integer as string)
-        totalVotingPower:
-          type: string
-          title: Total voting power (big integer as string)
-        validatorsSszMroot:
-          type: string
-          title: Validators SSZ Merkle root (hex string)
-      title: Response message for getting validator set header
-    SignMessageResponse:
-      type: object
-      properties:
-        requestId:
-          type: string
-          title: Hash of the signature request
-        epoch:
-          type: string
-          format: uint64
-          title: Epoch number
-      title: Response message for sign message request
-    GetAggregationProofResponse:
-      type: object
-      properties:
-        aggregationProof:
-          $ref: '#/components/schemas/AggregationProof'
-      title: Response message for getting aggregation proof
-    GetValidatorSetMetadataResponse:
-      type: object
-      properties:
-        extraData:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/ExtraData'
-        commitmentData:
-          type: string
-          format: byte
-        requestId:
-          type: string
-      title: Response message for getting validator set header
-    GetSignaturesByEpochResponse:
-      type: object
-      properties:
-        signatures:
-          type: array
-          items:
-            type: object
-            $ref: '#/components/schemas/Signature'
-          title: List of signatures
-        nextFrom:
-          type: string
-          description: Cursor to retrieve the next page. Empty when this is the last page.
-      title: Response message for getting signatures by epoch
     SignMessageRequest:
       type: object
       properties:
@@ -1049,48 +744,36 @@ components:
           format: uint64
           title: Required epoch (optional, if not provided latest committed epoch will be used)
       title: Request message for signing a message
-    GetValidatorSetResponse:
+    Any:
       type: object
       properties:
-        validatorSet:
-          $ref: '#/components/schemas/ValidatorSet'
-          title: The validator set
-      title: Response message for getting validator set
-    GetSignatureRequestsByEpochResponse:
+        '@type':
+          type: string
+      additionalProperties: {}
+    GetCurrentEpochResponse:
       type: object
       properties:
-        signatureRequests:
+        epoch:
+          type: string
+          format: uint64
+          title: Epoch number
+        startTime:
+          type: string
+          format: date-time
+          title: Epoch start time
+      title: Response message for getting current epoch
+    GetAggregationProofsByEpochResponse:
+      type: object
+      properties:
+        aggregationProofs:
           type: array
           items:
             type: object
-            $ref: '#/components/schemas/SignatureRequest'
-          title: List of all signature requests for the epoch
+            $ref: '#/components/schemas/AggregationProof'
         nextFrom:
           type: string
           description: Cursor to retrieve the next page. Empty when this is the last page.
-      title: Response message for getting all signature requests by epoch
-    GetLastCommittedResponse:
-      type: object
-      properties:
-        settlementChainId:
-          type: string
-          format: uint64
-          title: Settlement chain ID
-        epochInfo:
-          $ref: '#/components/schemas/ChainEpochInfo'
-      title: Response message for getting last committed epoch
-    GetAggregationStatusResponse:
-      type: object
-      properties:
-        currentVotingPower:
-          type: string
-          title: Current voting power of the aggregator (big integer as string)
-        signerOperators:
-          type: array
-          items:
-            type: string
-          title: List of operator addresses that signed the request
-      title: Response message for getting aggregation status
+      title: Response message for getting aggregation proof
     Validator:
       type: object
       properties:
@@ -1123,16 +806,107 @@ components:
           $ref: '#/components/schemas/ValidatorSet'
           title: The validator set
       title: Response message for validator set changes stream
-    ValidatorSetStatus:
-      type: string
-      enum:
-      - VALIDATOR_SET_STATUS_UNSPECIFIED
-      - VALIDATOR_SET_STATUS_DERIVED
-      - VALIDATOR_SET_STATUS_AGGREGATED
-      - VALIDATOR_SET_STATUS_COMMITTED
-      default: VALIDATOR_SET_STATUS_UNSPECIFIED
-      description: "- VALIDATOR_SET_STATUS_UNSPECIFIED: Default/unknown status\n - VALIDATOR_SET_STATUS_DERIVED: Derived status\n - VALIDATOR_SET_STATUS_AGGREGATED: Aggregated status\n - VALIDATOR_SET_STATUS_COMMITTED: Committed status"
-      title: Validator set status enumeration
+    GetLocalValidatorResponse:
+      type: object
+      properties:
+        validator:
+          $ref: '#/components/schemas/Validator'
+          title: The validator
+      title: Response message for getting local validator
+    Key:
+      type: object
+      properties:
+        tag:
+          type: integer
+          format: int64
+          title: Key tag identifier (0-127)
+        payload:
+          type: string
+          format: byte
+          title: Key payload
+      title: Cryptographic key
+    Status:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+        details:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Any'
+    GetCustomScheduleNodeStatusResponse:
+      type: object
+      properties:
+        isActive:
+          type: boolean
+          description: 'True if this node is active in the current time slot and should perform the scheduled action.
+
+            False if this node should wait (another group is active). When multiple validators share a slot,
+
+            all return true simultaneously, enabling coordinated redundancy.'
+        currentSlotStartTime:
+          type: string
+          format: date-time
+          description: 'Start time of the current active slot. This marks the beginning of the current slot time window.
+
+            Can be used to determine how much time is left in the slot.'
+        currentSlotEndTime:
+          type: string
+          format: date-time
+          description: 'End time of the current active slot. This marks the end of the current slot time window.
+
+            Can be used to determine how much time is left in the slot.'
+      description: Response indicating whether the current node should be active now.
+    SignMessageResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          title: Hash of the signature request
+        epoch:
+          type: string
+          format: uint64
+          title: Epoch number
+      title: Response message for sign message request
+    GetSignaturesResponse:
+      type: object
+      properties:
+        signatures:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Signature'
+          title: List of signatures
+      title: Response message for getting signatures
+    GetSignaturesByEpochResponse:
+      type: object
+      properties:
+        signatures:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Signature'
+          title: List of signatures
+        nextFrom:
+          type: string
+          description: Cursor to retrieve the next page. Empty when this is the last page.
+      title: Response message for getting signatures by epoch
+    GetSignatureRequestIDsByEpochResponse:
+      type: object
+      properties:
+        requestIds:
+          type: array
+          items:
+            type: string
+          title: List of all signature request IDs for the epoch
+        nextFrom:
+          type: string
+          description: Cursor to retrieve the next page. Empty when this is the last page.
+      title: Response message for getting all signature request IDs by epoch
     ValidatorVault:
       type: object
       properties:
@@ -1147,6 +921,99 @@ components:
           type: string
           title: Voting power for this vault (big integer as string)
       title: Validator vault information
+    GetValidatorSetHeaderResponse:
+      type: object
+      properties:
+        version:
+          type: integer
+          format: int64
+          title: Version of the validator set
+        requiredKeyTag:
+          type: integer
+          format: int64
+          title: Key tag required to commit next validator set
+        epoch:
+          type: string
+          format: uint64
+          title: Validator set epoch
+        captureTimestamp:
+          type: string
+          format: date-time
+          title: Epoch capture timestamp
+        quorumThreshold:
+          type: string
+          title: Quorum threshold (big integer as string)
+        totalVotingPower:
+          type: string
+          title: Total voting power (big integer as string)
+        validatorsSszMroot:
+          type: string
+          title: Validators SSZ Merkle root (hex string)
+      title: Response message for getting validator set header
+    GetValidatorSetMetadataResponse:
+      type: object
+      properties:
+        extraData:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/ExtraData'
+        commitmentData:
+          type: string
+          format: byte
+        requestId:
+          type: string
+      title: Response message for getting validator set header
+    Signature:
+      type: object
+      properties:
+        signature:
+          type: string
+          format: byte
+          title: Signature data
+        messageHash:
+          type: string
+          format: byte
+          title: Message hash
+        publicKey:
+          type: string
+          format: byte
+          title: Public key
+        requestId:
+          type: string
+          title: Request ID
+      title: Digital signature
+    ExtraData:
+      type: object
+      properties:
+        key:
+          type: string
+          format: byte
+        value:
+          type: string
+          format: byte
+    GetValidatorByKeyResponse:
+      type: object
+      properties:
+        validator:
+          $ref: '#/components/schemas/Validator'
+          title: The validator
+      title: Response message for getting validator by key
+    AggregationProof:
+      type: object
+      properties:
+        messageHash:
+          type: string
+          format: byte
+          title: Message hash
+        proof:
+          type: string
+          format: byte
+          title: Proof data
+        requestId:
+          type: string
+          title: Request ID
+      title: Response message for getting aggregation proof
     GetLastAllCommittedResponse:
       type: object
       properties:
@@ -1159,12 +1026,145 @@ components:
           $ref: '#/components/schemas/ChainEpochInfo'
           title: Suggested epoch info for signatures, it is the minimum commited epoch among all chains
       title: Response message for getting all last committed epochs
-    ExtraData:
+    GetValidatorSetResponse:
       type: object
       properties:
-        key:
+        validatorSet:
+          $ref: '#/components/schemas/ValidatorSet'
+          title: The validator set
+      title: Response message for getting validator set
+    GetValidatorByAddressResponse:
+      type: object
+      properties:
+        validator:
+          $ref: '#/components/schemas/Validator'
+          title: The validator
+      title: Response message for getting validator by address
+    ListenProofsResponse:
+      type: object
+      properties:
+        requestId:
           type: string
-          format: byte
-        value:
+          title: Id of the request
+        epoch:
           type: string
-          format: byte
+          format: uint64
+          title: Epoch number
+        aggregationProof:
+          $ref: '#/components/schemas/AggregationProof'
+          title: Final aggregation proof
+      title: Response message for aggregation proofs stream
+    ValidatorSetStatus:
+      type: string
+      enum:
+      - VALIDATOR_SET_STATUS_UNSPECIFIED
+      - VALIDATOR_SET_STATUS_DERIVED
+      - VALIDATOR_SET_STATUS_AGGREGATED
+      - VALIDATOR_SET_STATUS_COMMITTED
+      default: VALIDATOR_SET_STATUS_UNSPECIFIED
+      description: "- VALIDATOR_SET_STATUS_UNSPECIFIED: Default/unknown status\n - VALIDATOR_SET_STATUS_DERIVED: Derived status\n - VALIDATOR_SET_STATUS_AGGREGATED: Aggregated status\n - VALIDATOR_SET_STATUS_COMMITTED: Committed status"
+      title: Validator set status enumeration
+    ChainEpochInfo:
+      type: object
+      properties:
+        lastCommittedEpoch:
+          type: string
+          format: uint64
+          title: Last committed epoch for this chain
+        startTime:
+          type: string
+          format: date-time
+          title: Epoch start time
+      title: Settlement chain with its last committed epoch
+    GetSignatureRequestsByEpochResponse:
+      type: object
+      properties:
+        signatureRequests:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/SignatureRequest'
+          title: List of all signature requests for the epoch
+        nextFrom:
+          type: string
+          description: Cursor to retrieve the next page. Empty when this is the last page.
+      title: Response message for getting all signature requests by epoch
+    GetSignatureRequestResponse:
+      type: object
+      properties:
+        signatureRequest:
+          $ref: '#/components/schemas/SignatureRequest'
+      title: Response message for getting signature request
+    ValidatorSet:
+      type: object
+      properties:
+        version:
+          type: integer
+          format: int64
+          title: Version of the validator set
+        requiredKeyTag:
+          type: integer
+          format: int64
+          title: Key tag required to commit next validator set
+        epoch:
+          type: string
+          format: uint64
+          title: Validator set epoch
+        captureTimestamp:
+          type: string
+          format: date-time
+          title: Epoch capture timestamp
+        quorumThreshold:
+          type: string
+          title: Quorum threshold (big integer as string)
+        status:
+          $ref: '#/components/schemas/ValidatorSetStatus'
+          title: Status of validator set header
+        validators:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/Validator'
+          title: List of validators
+    GetLastCommittedResponse:
+      type: object
+      properties:
+        settlementChainId:
+          type: string
+          format: uint64
+          title: Settlement chain ID
+        epochInfo:
+          $ref: '#/components/schemas/ChainEpochInfo'
+      title: Response message for getting last committed epoch
+    GetAggregationProofResponse:
+      type: object
+      properties:
+        aggregationProof:
+          $ref: '#/components/schemas/AggregationProof'
+      title: Response message for getting aggregation proof
+    ListenSignaturesResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+          title: Id of the signature request
+        epoch:
+          type: string
+          format: uint64
+          title: Epoch number
+        signature:
+          $ref: '#/components/schemas/Signature'
+          title: Signature data
+      title: Response message for signatures stream
+    GetAggregationStatusResponse:
+      type: object
+      properties:
+        currentVotingPower:
+          type: string
+          title: Current voting power of the aggregator (big integer as string)
+        signerOperators:
+          type: array
+          items:
+            type: string
+          title: List of operator addresses that signed the request
+      title: Response message for getting aggregation status
