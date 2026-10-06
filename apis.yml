@@ -35,7 +35,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-10-06'
 tags:
 - Company
 - Crypto Defi
@@ -55,6 +55,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://resources.symbiotic.fi/rss.xml
+  type: BlogRSS
 - type: AgentSkill
   url: skills/symbiotic-query-validator-set.md
 - type: X-MCPServerCandidate
